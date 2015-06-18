@@ -28,34 +28,26 @@ compiler:
   - gcc
 
 script:
-# - WINEDEBUG=+tid,+msg,+x11drv,+wineboot,+process,+timestamp,+appwizcpl winetricks remove_mono
-# - ls -R ~/.wine/drive_c/windows/system32/drivers/
   - export WINEARCH=win32
-  - DISPLAY=:88.0 WINEDEBUG=+tid,+msg,+x11drv,+wineboot,+process,+timestamp,+appwizcpl wineboot # hack - wineboot without display
-  - ls -R ~/.wine/drive_c/windows/system32/drivers/
-#  - WINEDEBUG=+tid,+msg,+x11drv,+wineboot,+process,+timestamp,+appwizcpl winetricks remove_mono
+  - DISPLAY=:88.0 WINEDEBUG=-all wineboot # hack - wineboot without display
+# - ls -R ~/.wine/drive_c/windows/system32/drivers/
   - WINEDEBUG=+tid wine uninstaller --list
   - export STAGING_WRITECOPY=1
   - export MSYSTEM=MSYS
-    # - export WINEDEBUG=-all
-  - export WINEDEBUG=+tid,+timestamp
-  - pwd
-  - ls
-  - cd
+# - pwd
+# - ls
   - cd ~/.wine/drive_c
-#  - DISPLAY=:88.0 WINEDEBUG=+tid,+msg,+x11drv,+wineboot,+process,+timestamp,+appwizcpl wineboot --update # create etc files
-  - ls -R windows/system32/drivers/
   - wget http://sourceforge.net/projects/msys2/files/Base/i686/msys2-base-i686-20150512.tar.xz
   - tar xf msys2-base-i686-20150512.tar.xz
-  - wineconsole --backend=curses msys32/usr/bin/bash.exe -l -c "echo restart"
+  - WINEDEBUG=-all wineconsole --backend=curses msys32/usr/bin/bash.exe -l -c "echo restart"
   - MSYS2_HOME=~/.wine/drive_c/msys32/home/$USER
   - cp $SCRIPT_DIR/PKGBUILD $MSYS2_HOME
   - cp $SCRIPT_DIR/msys2_update.sh $MSYS2_HOME
   - cp $SCRIPT_DIR/msys2_socat.sh $MSYS2_HOME
   - cp $SCRIPT_DIR/build.sh $MSYS2_HOME
-  - wineconsole --backend=curses msys32/usr/bin/bash.exe -l -c "./msys2_update.sh"
+  - WINEDEBUG=-all wineconsole --backend=curses msys32/usr/bin/bash.exe -l -c "./msys2_update.sh"
   - cat $MSYS2_HOME/msys2_update.log
-  - WINEDEBUG=+tid,+console,+timestamp wineconsole --backend=user msys32/usr/bin/bash.exe -l -c "./msys2_socat.sh" & # msys2 socat run in background
+  - WINEDEBUG=-all wineconsole --backend=user msys32/usr/bin/bash.exe -l -c "./msys2_socat.sh" & # msys2 socat run in background
   - echo wait until msys2 socat is ready && sleep 30
   - cat $MSYS2_HOME/msys2_socat.log
   - echo "ls -lh" | nc 127.0.0.1 44444  # test nc
