@@ -1,3 +1,3 @@
 #!/bin/sh
 pacman -Sy
-pacman -S msys2-runtime pacman
+pacman -S --needed --noconfirm msys2-runtime pacman
