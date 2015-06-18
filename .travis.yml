@@ -22,7 +22,7 @@ script:
   - export WINEDEBUG=-all
   - cd ~/.wine/drive_c
   - wget http://sourceforge.net/projects/msys2/files/Base/i686/msys2-base-i686-20150512.tar.xz
-  - tar xvf msys2-base-i686-20150512.tar.xz
+  - tar xf msys2-base-i686-20150512.tar.xz
   - wineconsole --backend=curses msys32/usr/bin/bash.exe -l -c "echo restart"
   - cp PKGBUILD msys32/home/"$USER"
   - cp msys2_update.sh msys32/home/"$USER"
