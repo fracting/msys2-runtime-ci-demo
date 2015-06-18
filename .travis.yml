@@ -28,7 +28,7 @@ compiler:
   - gcc
 
 script:
-  - export WINEARCH=win32
+# - export WINEARCH=win32
   - DISPLAY=:88.0 WINEDEBUG=-all wineboot # hack - wineboot without display
 # - ls -R ~/.wine/drive_c/windows/system32/drivers/
   - WINEDEBUG=+tid wine uninstaller --list
