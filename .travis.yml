@@ -29,5 +29,5 @@ script:
   - cp msys2_socat.sh msys32/home/"$USER"
   - cp build.sh msys32/home/"$USER"
   - wineconsole --backend=curses msys32/usr/bin/bash.exe -l -c "./msys2_update.sh"
-  - wineconsole --backend=curses msys32/usr/bin/bash.exe -l -c "./msys2_socat.sh" & # msys2 socat run in background
+  - wineconsole --backend=user msys32/usr/bin/bash.exe -l -c "./msys2_socat.sh" & # msys2 socat run in background
   - (echo "./build.sh"; sleep 3600) | nc 127.0.0.1 44444
