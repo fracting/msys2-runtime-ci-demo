@@ -37,8 +37,9 @@ script:
 # - pwd
 # - ls
   - cd ~/.wine/drive_c
-  - wget http://sourceforge.net/projects/msys2/files/Base/i686/msys2-base-i686-20150512.tar.xz
-  - tar xf msys2-base-i686-20150512.tar.xz
+# - wget http://sourceforge.net/projects/msys2/files/Base/i686/msys2-base-i686-20150512.tar.xz
+  - wget http://sourceforge.net/projects/msys2/files/Base/x86_64/msys2-base-x86_64-20150512.tar.xz
+  - tar xf msys2-base-*.tar.xz
   - WINEDEBUG=-all wineconsole --backend=curses msys32/usr/bin/bash.exe -l -c "echo restart"
   - MSYS2_HOME=~/.wine/drive_c/msys32/home/$USER
   - cp $SCRIPT_DIR/PKGBUILD $MSYS2_HOME
