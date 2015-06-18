@@ -53,7 +53,7 @@ script:
   - wineconsole --backend=curses msys32/usr/bin/bash.exe -l -c "./msys2_update.sh"
   - cat $MSYS2_HOME/msys2_update.log
   - WINEDEBUG=+tid,+console,+timestamp wineconsole --backend=user msys32/usr/bin/bash.exe -l -c "./msys2_socat.sh" & # msys2 socat run in background
-  - echo wait until msys2 socat is ready && sleep 400
+  - echo wait until msys2 socat is ready && sleep 30
   - cat $MSYS2_HOME/msys2_socat.log
   - echo "ls -lh" | nc 127.0.0.1 44444  # test nc
   - (echo "./build.sh"; sleep 3600) | nc 127.0.0.1 44444 & # background
