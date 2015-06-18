@@ -23,11 +23,12 @@ compiler:
   - gcc
 
 script:
-  - WINEDEBUG=+tid,+msg,+x11drv,+wineboot,+process,+timestamp,+appwizcpl winetricks remove_mono
+# - WINEDEBUG=+tid,+msg,+x11drv,+wineboot,+process,+timestamp,+appwizcpl winetricks remove_mono
+# - ls -R ~/.wine/drive_c/windows/system32/drivers/
+  - DISPLAY=:88.0 WINEDEBUG=+tid,+msg,+x11drv,+wineboot,+process,+timestamp,+appwizcpl wineboot # hack - wineboot without display
   - ls -R ~/.wine/drive_c/windows/system32/drivers/
-  - WINEDEBUG=+tid,+msg,+x11drv,+wineboot,+process,+timestamp,+appwizcpl wineboot
-  - ls -R ~/.wine/drive_c/windows/system32/drivers/
   - WINEDEBUG=+tid,+msg,+x11drv,+wineboot,+process,+timestamp,+appwizcpl winetricks remove_mono
+  - WINEDEBUG=+tid wine uninstaller --list
   - export STAGING_WRITECOPY=1
   - export MSYSTEM=MSYS
     # - export WINEDEBUG=-all
