@@ -52,7 +52,4 @@ script:
   - cat $MSYS2_HOME/msys2_socat.log
   - echo "ls -lh" | nc 127.0.0.1 44444  # test nc
   - (echo "./build.sh"; sleep 3600) | nc 127.0.0.1 44444 & # background
-  - winedbg --command "info wnd"
-  - winedbg --command "info process"
-  - winedbg --command "info thread"
   - wineserver --wait # wait wine processes to prevent travis ci exiting unexpectedly
