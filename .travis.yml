@@ -37,6 +37,7 @@ script:
   - cp $SCRIPT_DIR/build.sh $MSYS2_HOME
   - wineconsole --backend=curses msys32/usr/bin/bash.exe -l -c "./msys2_update.sh"
   - wineconsole --backend=user msys32/usr/bin/bash.exe -l -c "./msys2_socat.sh" & # msys2 socat run in background
-  - echo wait until msys2 socat is ready && sleep 30
+  - echo wait until msys2 socat is ready && sleep 400
+  - echo "ls -lh" | nc 127.0.0.1 44444  # test nc
   - (echo "./build.sh"; sleep 3600) | nc 127.0.0.1 44444 & # background
   - wineserver --wait # wait wine processes to prevent travis ci exiting unexpectedly
