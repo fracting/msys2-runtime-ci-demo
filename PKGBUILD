@@ -28,7 +28,7 @@ source=('https://github.com/Alexpux/Cygwin/archive/msys2-master.zip')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/msys2-runtime"
+  # cd "$srcdir/msys2-runtime"
   #printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   #printf "%s.%s.%s" "${_ver_base}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   #printf "r%s" "$(svnversion | tr -d 'A-z')"
