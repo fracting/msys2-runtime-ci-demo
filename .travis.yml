@@ -55,5 +55,5 @@ script:
   - cat $MSYS2_HOME/msys2_socat.log
   - echo "ls -lh" | nc 127.0.0.1 44444  # test nc
   - (echo "./build.sh"; sleep 3600) | nc 127.0.0.1 44444 & # background
-  - wineserver --wait # wait wine processes to prevent travis ci exiting unexpectedly
+  - travis_wait wineserver --wait # wait wine processes to prevent travis ci exiting unexpectedly
   - exit `cat test.log` # restore exit code from makepkg in build.sh
