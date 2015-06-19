@@ -14,7 +14,6 @@ before_script:
   - sudo apt-get install -y --install-recommends wine-staging wine-staging-compat
 # - sudo apt-get install -y wine-staging wine-staging-compat
   - pwd
-  - ls
 
 language: c
 
