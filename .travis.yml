@@ -28,7 +28,6 @@ script:
 # - ls -R ~/.wine/drive_c/windows/system32/drivers/
   - export STAGING_WRITECOPY=1
   - export MSYSTEM=MSYS
-# - pwd
 # - ls
   - cd ~/.wine/drive_c
   - wget http://sourceforge.net/projects/msys2/files/Base/i686/msys2-base-i686-20150512.tar.xz
