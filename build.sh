@@ -1,5 +1,4 @@
 #!/bin/sh
-ls
 pacman -S --needed --noconfirm base-devel gcc
 makepkg -s --noconfirm --skippgpcheck -f
 
