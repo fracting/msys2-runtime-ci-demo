@@ -60,7 +60,7 @@ build() {
     --prefix=/usr \
     --build=${CHOST} \
     --sysconfdir=/etc
-  LC_ALL=C make -j2
+  LC_ALL=C make
   LC_ALL=C make -j1 DESTDIR=${srcdir}/dest install
 
   #pushd ${CHOST}/winsup/cygwin > /dev/null
