@@ -12,9 +12,9 @@ license=('GPL')
 groups=('base')
 depends=()
 makedepends=('cocom'
-             'svn'
              'perl'
              'gcc'
+             'unzip'
              'make'
              'mingw-w64-cross-gcc'
              'mingw-w64-cross-zlib'
@@ -22,19 +22,22 @@ makedepends=('cocom'
              'gettext-devel'
              'libiconv-devel'
              'diffutils')
-# options=('debug' '!strip')
-source=('msys2-runtime'::'svn+https://github.com/Alexpux/Cygwin/branches/msys2-master')
+options=('debug' '!strip')
+# source=('msys2-runtime'::'svn+https://github.com/Alexpux/Cygwin/branches/msys2-master')
+source=('https://github.com/Alexpux/Cygwin/archive/msys2-master.zip')
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/msys2-runtime"
   #printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   #printf "%s.%s.%s" "${_ver_base}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  printf "r%s" "$(svnversion | tr -d 'A-z')"
+  #printf "r%s" "$(svnversion | tr -d 'A-z')"
 }
 
 prepare() {
-  cd "$srcdir/msys2-runtime"
+  cd "${srcdir}"
+  unzip ${srcdir}/msys2-master.zip -d $srcdir || true
+  mv ${srcdir}/Cygwin-msys2-master ${srcdir}/msys2-runtime
 }
 
 build() {
