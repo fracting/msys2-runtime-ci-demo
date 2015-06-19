@@ -32,6 +32,7 @@ pkgver() {
   #printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   #printf "%s.%s.%s" "${_ver_base}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   #printf "r%s" "$(svnversion | tr -d 'A-z')"
+  echo test
 }
 
 prepare() {
