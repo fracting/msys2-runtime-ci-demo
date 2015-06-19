@@ -19,7 +19,6 @@ before_script:
   - ls
 #  - mkdir -p ~/.cache/wine && cd ~/.cache/wine && wget --content-disposition http://source.winehq.org/winemono.php && cd -
 #  - mkdir -p ~/.cache/wine && cd ~/.cache/wine && wget http://downloads.sourceforge.net/project/wine/Wine%20Gecko/2.36/wine_gecko-2.36-x86.msi && cd -
-# - sudo apt-get install -y wine-mono4.5.6 wine-gecko2.36 # Ubuntu 14.10
 #  - sudo apt-get install -y netcat-openbsd
 
 language: c
