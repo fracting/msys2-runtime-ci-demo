@@ -3,7 +3,7 @@
 
 pkgname=('msys2-runtime' 'msys2-runtime-devel')
 _ver_base=2.1.0
-pkgver=r32585
+pkgver=testver
 pkgrel=1
 pkgdesc="Cygwin POSIX emulation engine"
 arch=('i686' 'x86_64')
@@ -23,22 +23,22 @@ makedepends=('cocom'
              'libiconv-devel'
              'diffutils')
 options=('debug' '!strip')
-source=('msys2-runtime'::'svn+https://github.com/Alexpux/Cygwin/branches/msys2-master')
-#source=('https://github.com/Alexpux/Cygwin/archive/msys2-master.zip')
+#source=('msys2-runtime'::'svn+https://github.com/Alexpux/Cygwin/branches/msys2-master')
+source=('https://github.com/Alexpux/Cygwin/archive/msys2-master.zip')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/msys2-runtime"
+  #cd "$srcdir/msys2-runtime"
   #printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   #printf "%s.%s.%s" "${_ver_base}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  printf "r%s" "$(svnversion | tr -d 'A-z')"
-  #echo test
+  #printf "r%s" "$(svnversion | tr -d 'A-z')"
+  printf testver
 }
 
 prepare() {
-  cd "${srcdir}/msys2-runtime"
-  #unzip ${srcdir}/msys2-master.zip -d $srcdir || true
-  #mv ${srcdir}/Cygwin-msys2-master ${srcdir}/msys2-runtime
+  echo srcdir is $srcdir
+  mv "$srcdir/Cygwin-msys2-master" "$srcdir/msys2-runtime"
+  cd "$srcdir/msys2-runtime"
 }
 
 build() {
