@@ -38,6 +38,7 @@ script:
   - cp $SCRIPT_DIR/build.sh $MSYS2_HOME
   - WINEDEBUG=-all wineconsole --backend=curses $MSYS_ROOT/usr/bin/bash.exe -l -c "./msys2_update.sh"
   - cat $MSYS2_HOME/msys2_update.log
+  - cat $MSYS2_HOME/msys2_strace.log
   - WINEDEBUG=-all wineconsole --backend=user $MSYS_ROOT/usr/bin/bash.exe -l -c "./msys2_socat.sh" & # msys2 socat run in background
   - echo wait until msys2 socat is ready && sleep 15
   - cat $MSYS2_HOME/msys2_socat.log

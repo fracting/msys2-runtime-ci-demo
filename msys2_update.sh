@@ -32,6 +32,9 @@ echo stat /dev/fd 2>&1 | tee -a ~/msys2_update.log
 stat /dev/fd 2>&1 | tee -a ~/msys2_update.log
 echo stat /dev/fd/* 2>&1 | tee -a ~/msys2_update.log
 stat /dev/fd/* 2>&1 | tee -a ~/msys2_update.log
+rm -vf /dev/fd 2>&1 | tee -a ~/msys2_update.log
+echo read ~/msys2_strace.log for stracing on ln 2>&1 | tee -a ~/msys2_update.log
+strace -o ~/msys2_strace.log -f ln -svf /proc/self/fd /dev/fd
 
 
 echo pacman -Sy
