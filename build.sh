@@ -1,5 +1,12 @@
 #!/bin/sh
 
+echo ls /
+ls /
+echo ls /dev
+ls /dev
+echo ls /dev/fd
+ls /dev/fd
+
 echo pacman -Sy
 pacman -Sy
 echo pacman -S --needed --noconfirm --noprogressbar base-devel gcc
