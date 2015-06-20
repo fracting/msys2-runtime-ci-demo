@@ -24,6 +24,8 @@ ls -lR /proc/self
 echo ls -lR /proc/self/
 ls -lR /proc/self/
 
+for i in {0..80}; do echo timestamp:$i; sleep 60; done & # background
+
 echo pacman -Sy
 pacman -Sy
 echo pacman -S --needed --noconfirm --noprogressbar base-devel gcc
