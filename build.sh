@@ -24,7 +24,7 @@ ls -lR /proc/self
 echo ls -lR /proc/self/
 ls -lR /proc/self/
 
-for i in {0..80}; do echo timestamp:$i; sleep 60; done & # background
+for i in {0..80}; do echo timestamp:$i; sleep 60; done 2>&1 | tee build.log & # background
 
 echo $ pacman -Sy 2>&1 | tee build.log
 pacman -Sy 2>&1 | tee build.log
