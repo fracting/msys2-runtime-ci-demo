@@ -26,18 +26,19 @@ ls -lR /proc/self/
 
 for i in {0..80}; do echo timestamp:$i; sleep 60; done & # background
 
-echo pacman -Sy
-pacman -Sy
-echo pacman -S --needed --noconfirm --noprogressbar base-devel gcc
-pacman -S --needed --noconfirm --noprogressbar base-devel gcc
-echo makepkg -s --noconfirm --noprogressbar --skippgpcheck -f
-makepkg -s --noconfirm --noprogressbar --skippgpcheck -f
+echo $ pacman -Sy 2>&1 | tee build.log
+pacman -Sy 2>&1 | tee build.log
+echo $ pacman -S --needed --noconfirm --noprogressbar base-devel gcc 2>&1 | tee build.log
+pacman -S --needed --noconfirm --noprogressbar base-devel gcc 2>&1 | tee build.log
+echo $ makepkg -s --noconfirm --noprogressbar --skippgpcheck -f 2>&1 | tee build.log
+makepkg -s --noconfirm --noprogressbar --skippgpcheck -f 2>&1 | tee build.log
 
 status=$?
 echo $status | tee ~/exit.number # store exit code of makepkg
+echo "exit code is $status" 2>&1 | tee build.log
 echo "exit code is $status"
 
 #clean up
-echo wineboot --kill # kill background wineconsole and socat processes
+echo wineboot --kill 2>&1 | tee build.log # kill background wineconsole and socat processes
 wineboot --kill # kill background wineconsole and socat processes
 exit $status # restore exit code of makepkg

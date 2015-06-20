@@ -50,5 +50,6 @@ script:
     #  - (echo "./build.sh"; sleep 5000) | nc 127.0.0.1 44444 & # background
     #  - for i in {0..80}; do echo timestamp:$i; sleep 60; done & # background
     #  - wineserver --wait # wait wine processes to prevent travis ci exiting unexpectedly
-    #  - $(exit `cat $MSYS2_HOME/exit.number`) # restore exit code from makepkg in build.sh
   - WINEDEBUG=-all wineconsole --backend=curses $MSYS_ROOT/usr/bin/bash.exe -l -c "./build.sh"
+  - cat $MSYS2_HOME/build.log
+  - $(exit `cat $MSYS2_HOME/exit.number`) # restore exit code from makepkg in build.sh
