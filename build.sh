@@ -12,6 +12,8 @@ echo stat /proc/self
 stat /proc/self
 echo stat /proc/self/fd
 stat /proc/self/fd
+echo stat /proc/self/fd/*
+stat /proc/self/fd/*
 
 echo ls -lR /dev
 ls -lR /dev
