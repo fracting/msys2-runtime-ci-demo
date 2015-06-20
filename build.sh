@@ -40,3 +40,4 @@ echo "exit code is $status"
 #clean up
 echo wineboot --kill # kill background wineconsole and socat processes
 wineboot --kill # kill background wineconsole and socat processes
+exit $status # restore exit code of makepkg
