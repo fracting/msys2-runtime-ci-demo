@@ -29,7 +29,7 @@ script:
   - wget http://sourceforge.net/projects/msys2/files/Base/i686/msys2-base-i686-20150512.tar.xz
 # - wget http://sourceforge.net/projects/msys2/files/Base/x86_64/msys2-base-x86_64-20150512.tar.xz
   - tar xf msys2-base-*.tar.xz
-  - WINEDEBUG=-all wineconsole --backend=curses $MSYS_ROOT/usr/bin/bash.exe -l -c "echo restart"
+  - WINEDEBUG=-all wineconsole --backend=curses $MSYS_ROOT/usr/bin/bash.exe -l -i -c "echo initialize msys2 and exit"
   - $SCRIPT_DIR/msys2_workaround_bug241.sh
   - MSYS2_HOME=~/.wine/drive_c/$MSYS_ROOT/home/$USER
   - cp $SCRIPT_DIR/PKGBUILD $MSYS2_HOME
