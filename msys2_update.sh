@@ -25,13 +25,13 @@ echo ls -lR /proc/self/ 2>&1 | tee -a ~/msys2_update.log
 ls -lR /proc/self/ 2>&1 | tee -a ~/msys2_update.log
 
 echo rm -vf /dev/fd 2>&1 | tee -a ~/msys2_update.log
-echo ln -sf /proc/self/fd /dev/fd 2>&1 | tee -a ~/msys2_update.log
+rm -vf /dev/fd 2>&1 | tee -a ~/msys2_update.log
+echo ln -svf /proc/self/fd /dev/fd 2>&1 | tee -a ~/msys2_update.log
+ln -svf /proc/self/fd /dev/fd 2>&1 | tee -a ~/msys2_update.log
 echo stat /dev/fd 2>&1 | tee -a ~/msys2_update.log
+stat /dev/fd 2>&1 | tee -a ~/msys2_update.log
 echo stat /dev/fd/* 2>&1 | tee -a ~/msys2_update.log
-rm -vf /dev/fd
-ln -sf /proc/self/fd /dev/fd
-stat /dev/fd
-stat /dev/fd/*
+stat /dev/fd/* 2>&1 | tee -a ~/msys2_update.log
 
 
 echo pacman -Sy
