@@ -37,7 +37,12 @@ echo $ makepkg -s --noconfirm --noprogressbar --skippgpcheck -f 2>&1 | tee -a bu
 exit_code=$(cat ~/exit.number)
 echo "exit code is $exit_code" 2>&1 | tee -a build.log
 
-ls -lR 2>&1 | tee -a build.log # dummy command to flush output, workaround wineconsole limitation.
+ls -l 2>&1 | tee -a build.log # dummy command to flush output, workaround wineconsole limitation.
+ls -l 2>&1 | tee -a build.log # dummy command to flush output, workaround wineconsole limitation.
+ls -l 2>&1 | tee -a build.log # dummy command to flush output, workaround wineconsole limitation.
+ls -l 2>&1 | tee -a build.log # dummy command to flush output, workaround wineconsole limitation.
+ls -l 2>&1 | tee -a build.log # dummy command to flush output, workaround wineconsole limitation.
+ls -l 2>&1 | tee -a build.log # dummy command to flush output, workaround wineconsole limitation.
 
 #clean up
 echo wineboot --kill 2>&1 | tee -a build.log # kill background wineconsole and socat processes
