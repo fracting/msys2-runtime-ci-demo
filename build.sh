@@ -1,29 +1,5 @@
 #!/bin/sh
 
-echo stat /
-stat /
-echo stat /dev
-stat /dev
-echo stat /dev/fd
-stat /dev/fd
-echo stat /proc
-stat /proc
-echo stat /proc/self
-stat /proc/self
-echo stat /proc/self/fd
-stat /proc/self/fd
-echo stat /proc/self/fd/*
-stat /proc/self/fd/*
-
-echo ls -lR /dev
-ls -lR /dev
-
-echo ls -lR /proc/self
-ls -lR /proc/self
-
-echo ls -lR /proc/self/
-ls -lR /proc/self/
-
 #for i in {0..80}; do echo timestamp:$i; sleep 60; done 2>&1 | tee -a build.log & # background
 (for i in {0..80}; do echo timestamp:$i; sleep 60; done 2>&1 | tee -a build.log) & # background
 
