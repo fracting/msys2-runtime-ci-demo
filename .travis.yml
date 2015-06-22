@@ -37,9 +37,12 @@ script:
   - $SCRIPT_DIR/msys2_workaround_bug241.sh
   - MSYS2_HOME=~/.wine/drive_c/$MSYS_ROOT/home/$USER
   - cp $SCRIPT_DIR/PKGBUILD $MSYS2_HOME
+  - cp $SCRIPT_DIR/msys2_workaround_bug403.sh $MSYS2_HOME
   - cp $SCRIPT_DIR/msys2_update.sh $MSYS2_HOME
   - cp $SCRIPT_DIR/msys2_socat.sh $MSYS2_HOME
   - cp $SCRIPT_DIR/build.sh $MSYS2_HOME
+  - WINEDEBUG=-all wineconsole --backend=curses $MSYS_ROOT/usr/bin/bash.exe -l -c "./msys2_workaround_bug403.sh"
+  - cat $MSYS2_HOME/msys2_workaround_bug403.log
   - WINEDEBUG=-all wineconsole --backend=curses $MSYS_ROOT/usr/bin/bash.exe -l -c "./msys2_update.sh"
   - cat $MSYS2_HOME/msys2_update.log
     #  - cat $MSYS2_HOME/msys2_strace.log
