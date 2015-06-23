@@ -16,7 +16,6 @@ before_script:
   - sudo add-apt-repository -y ppa:pipelight/stable
   - sudo apt-get update -qq
   - sudo apt-get install -y --install-recommends wine-staging wine-staging-compat
-# - sudo apt-get install -y wine-staging wine-staging-compat
 
 language: c
 
@@ -26,7 +25,6 @@ compiler:
 script:
   - export MSYS_ROOT=msys32 # msys32 for 32bit msys2, msys64 for 64bit msys2
   - DISPLAY=:88.0 WINEDEBUG=-all wineboot # hack - wineboot without display
-# - ls -R ~/.wine/drive_c/windows/system32/drivers/
   - export STAGING_WRITECOPY=1
   - export MSYSTEM=MSYS
   - cd ~/.wine/drive_c
@@ -37,21 +35,7 @@ script:
   - $SCRIPT_DIR/msys2_workaround_bug241.sh
   - MSYS2_HOME=~/.wine/drive_c/$MSYS_ROOT/home/$USER
   - cp -v $SCRIPT_DIR/* $MSYS2_HOME
-    #  - cp $SCRIPT_DIR/PKGBUILD $MSYS2_HOME
-    #  - cp $SCRIPT_DIR/msys2_workaround_bug403.sh $MSYS2_HOME
-    #  - cp $SCRIPT_DIR/msys2_update.sh $MSYS2_HOME
-    #  - cp $SCRIPT_DIR/msys2_socat.sh $MSYS2_HOME
-    #  - cp $SCRIPT_DIR/build.sh $MSYS2_HOME
   - $SCRIPT_DIR/wine_msys2_wrapper.sh "./msys2_workaround_bug403.sh"
   - $SCRIPT_DIR/wine_msys2_wrapper.sh "./msys2_update.sh"
-    #  - cat $MSYS2_HOME/msys2_strace.log
-    #  - WINEDEBUG=-all wineconsole --backend=user $MSYS_ROOT/usr/bin/bash.exe -l -c "./msys2_socat.sh" & # msys2 socat run in background
-    #  - echo wait until msys2 socat is ready && sleep 15
-    #  - cat $MSYS2_HOME/msys2_socat.log
-    #  - echo "ls -lh" | nc 127.0.0.1 44444  # test nc
-    #  - (echo "./build.sh"; sleep 5000) | nc 127.0.0.1 44444 & # background
-    #  - for i in {0..80}; do echo timestamp:$i; sleep 60; done & # background
-    #  - wineserver --wait # wait wine processes to prevent travis ci exiting unexpectedly
   - $SCRIPT_DIR/wine_msys2_wrapper.sh "./build.sh"
-    #  - cat $MSYS2_HOME/build.log
   - $(exit `cat $MSYS2_HOME/exit.number`) # restore exit code from makepkg in build.sh
