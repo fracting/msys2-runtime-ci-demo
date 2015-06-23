@@ -33,7 +33,7 @@ script:
   - wget http://sourceforge.net/projects/msys2/files/Base/i686/msys2-base-i686-20150512.tar.xz
 # - wget http://sourceforge.net/projects/msys2/files/Base/x86_64/msys2-base-x86_64-20150512.tar.xz
   - tar xf msys2-base-*.tar.xz
-  - SCRIPT_DIR/wine_msys2_wrapper.sh "echo restart"
+  - $SCRIPT_DIR/wine_msys2_wrapper.sh "echo restart"
   - $SCRIPT_DIR/msys2_workaround_bug241.sh
   - MSYS2_HOME=~/.wine/drive_c/$MSYS_ROOT/home/$USER
   - cp -v $SCRIPT_DIR/* $MSYS2_HOME
@@ -42,8 +42,8 @@ script:
     #  - cp $SCRIPT_DIR/msys2_update.sh $MSYS2_HOME
     #  - cp $SCRIPT_DIR/msys2_socat.sh $MSYS2_HOME
     #  - cp $SCRIPT_DIR/build.sh $MSYS2_HOME
-  - SCRIPT_DIR/wine_msys2_wrapper.sh "./msys2_workaround_bug403.sh"
-  - SCRIPT_DIR/wine_msys2_wrapper.sh "./msys2_update.sh"
+  - $SCRIPT_DIR/wine_msys2_wrapper.sh "./msys2_workaround_bug403.sh"
+  - $SCRIPT_DIR/wine_msys2_wrapper.sh "./msys2_update.sh"
     #  - cat $MSYS2_HOME/msys2_strace.log
     #  - WINEDEBUG=-all wineconsole --backend=user $MSYS_ROOT/usr/bin/bash.exe -l -c "./msys2_socat.sh" & # msys2 socat run in background
     #  - echo wait until msys2 socat is ready && sleep 15
@@ -52,6 +52,6 @@ script:
     #  - (echo "./build.sh"; sleep 5000) | nc 127.0.0.1 44444 & # background
     #  - for i in {0..80}; do echo timestamp:$i; sleep 60; done & # background
     #  - wineserver --wait # wait wine processes to prevent travis ci exiting unexpectedly
-  - SCRIPT_DIR/wine_msys2_wrapper.sh "./build.sh"
+  - $SCRIPT_DIR/wine_msys2_wrapper.sh "./build.sh"
     #  - cat $MSYS2_HOME/build.log
   - $(exit `cat $MSYS2_HOME/exit.number`) # restore exit code from makepkg in build.sh
