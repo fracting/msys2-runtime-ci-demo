@@ -27,6 +27,7 @@ script:
   - DISPLAY=:88.0 WINEDEBUG=-all wineboot # hack - wineboot without display
   - export STAGING_WRITECOPY=1
   - export MSYSTEM=MSYS
+  - export MSYS="winsymlinks=lnk" # workaround wine staging bug 403
   - cd ~/.wine/drive_c
   - wget http://sourceforge.net/projects/msys2/files/Base/i686/msys2-base-i686-20150512.tar.xz
 # - wget http://sourceforge.net/projects/msys2/files/Base/x86_64/msys2-base-x86_64-20150512.tar.xz
@@ -35,7 +36,7 @@ script:
   - $SCRIPT_DIR/msys2_workaround_bug241.sh
   - MSYS2_HOME=~/.wine/drive_c/$MSYS_ROOT/home/$USER
   - cp -v $SCRIPT_DIR/* $MSYS2_HOME
-  - $SCRIPT_DIR/wine_msys2_wrapper.sh "./msys2_workaround_bug403.sh"
+#  - $SCRIPT_DIR/wine_msys2_wrapper.sh "./msys2_workaround_bug403.sh"
   - $SCRIPT_DIR/wine_msys2_wrapper.sh "./msys2_update.sh"
   - $SCRIPT_DIR/wine_msys2_wrapper.sh "./build.sh"
   - $(exit `cat $MSYS2_HOME/exit.number`) # restore exit code from makepkg in build.sh
